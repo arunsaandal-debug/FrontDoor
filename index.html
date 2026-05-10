@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrontDoor Solutions - Grow Your UK Business</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .section-transition {
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: currentColor;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .pricing-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .pricing-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.featured {
+            transform: scale(1.05);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .portfolio-item {
+            overflow: hidden;
+            border-radius: 12px;
+        }
+        
+        .portfolio-overlay {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .review-card {
+            backdrop-filter: blur(10px);
+        }
+        
+        .toast {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 60px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            z-index: 9999;
+            min-width: 400px;
+            animation: toastShow 0.5s ease-out;
+        }
+        
+        @keyframes toastShow {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -60%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+        
+        @keyframes toastHide {
+            from {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+            to {
+                opacity: 0;
+                transform: translate(-50%, -40%);
+            }
+        }
+        
+        .toast.hide {
+            animation: toastHide 0.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation Bar -->
+    <nav class="fixed w-full top-0 z-50 bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <svg class="w-10 h-10" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <!-- House -->
+                        <path d="M 30 70 L 30 40 L 50 25 L 70 40 L 70 70 Z" fill="#A020F0" stroke="#A020F0" stroke-width="3"/>
+                        <!-- Door window -->
+                        <rect x="45" y="50" width="10" height="15" fill="white"/>
+                        <!-- Arrow pointing up -->
+                        <path d="M 60 60 L 75 45 M 75 45 L 65 50 M 75 45 L 70 55" fill="none" stroke="#D81B60" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="text-xl font-bold text-gray-900">FrontDoor</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 font-medium hover:text-purple-600">Home</a>
+                    <a href="#pricing" class="nav-link text-gray-700 font-medium hover:text-purple-600">Pricing</a>
+                    <a href="#contact" class="nav-link text-gray-700 font-medium hover:text-purple-600">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-hero text-white pt-32 pb-20 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="fade-in">
+                <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6">
+                    Grow Your Business With Purpose
+                </h1>
+                <p class="text-xl text-purple-100 mb-8 leading-relaxed">
+                    Dedicated web support for UK local trades and hospitality businesses. We help you establish, scale and streamline your online presence so you can focus on what you do best - running your business.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#contact" class="bg-white text-purple-600 px-8 py-4 rounded-lg font-bold text-lg hover:shadow-xl hover:scale-105 transition-all text-center">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-20 px-4 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">How We Help You</h2>
+                <p class="text-xl text-gray-600">Three simple steps to transform your business</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-md hover-lift">
+                    <div class="text-4xl mb-4">🎯</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Assess</h3>
+                    <p class="text-gray-600">We analyse your current business and online presence, identify weak spots and understand your aspirations.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md hover-lift">
+                    <div class="text-4xl mb-4">🛠️</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Strategise</h3>
+                    <p class="text-gray-600">Custom solutions tailored to your business type, budget, and growth goals.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md hover-lift">
+                    <div class="text-4xl mb-4">🚀</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Execute</h3>
+                    <p class="text-gray-600">We implement, support, and optimise until you see real, measurable results.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Simple, Transparent Pricing</h2>
+                <p class="text-xl text-gray-600">Choose the plan that fits your business</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 justify-center max-w-5xl mx-auto">
+                <!-- Starter Plan -->
+                <div class="pricing-card bg-white border-2 border-gray-200 rounded-2xl p-8 shadow-md">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Starter</h3>
+                    <p class="text-gray-600 mb-6">Perfect for sole traders</p>
+                    
+                    <div class="mb-6">
+                        <div class="mb-2">
+                            <span class="text-3xl font-bold text-gray-900">£299</span>
+                            <span class="text-gray-600"> one off cost</span>
+                        </div>
+                        <div>
+                            <span class="text-3xl font-bold text-gray-900">£49</span>
+                            <span class="text-gray-600">/month</span>
+                        </div>
+                    </div>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-center text-gray-700">
+                            <span class="text-green-500 mr-3">✓</span>
+                            Website Creation + hosting + domain
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <span class="text-green-500 mr-3">✓</span>
+                            Logo creation + Brand colour palette
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <span class="text-green-500 mr-3">✓</span>
+                            Google Business Profile setup
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <span class="text-green-500 mr-3">✓</span>
+                            Email support
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Professional Plan (Featured) -->
+                <div class="pricing-card featured bg-gradient-to-br from-purple-600 to-pink-600 text-white rounded-2xl p-8 shadow-xl md:scale-105">
+                    <div class="bg-yellow-300 text-purple-900 px-4 py-1 rounded-full inline-block mb-4 font-bold text-sm">
+                        Most Popular
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold mb-2">Professional</h3>
+                    <p class="text-purple-100 mb-6">For growing teams</p>
+                    
+                    <div class="mb-6">
+                        <div class="mb-2">
+                            <span class="text-3xl font-bold">£299</span>
+                            <span class="text-purple-100"> one off cost</span>
+                        </div>
+                        <div>
+                            <span class="text-3xl font-bold">£249</span>
+                            <span class="text-purple-100">/month</span>
+                        </div>
+                    </div>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <span class="text-yellow-300 mr-3">✓</span>
+                            SEO Setup
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-yellow-300 mr-3">✓</span>
+                            Social media management + Content generation
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-yellow-300 mr-3">✓</span>
+                            Review management
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-yellow-300 mr-3">✓</span>
+                            Proactive updates on all online platforms
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Get In Touch</h2>
+                <p class="text-xl text-gray-600">Ready to grow your business? Contact us today</p>
+            </div>
+            
+            <form class="bg-gray-50 p-8 rounded-2xl shadow-md">
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <label class="block text-gray-700 font-bold mb-2">Business Name</label>
+                        <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-purple-600" placeholder="Your business name">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-bold mb-2">Your Name</label>
+                        <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-purple-600" placeholder="Your full name">
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <label class="block text-gray-700 font-bold mb-2">Email</label>
+                        <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-purple-600" placeholder="your@email.com">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-bold mb-2">Phone</label>
+                        <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-purple-600" placeholder="+44 (0) xxx xxx xxxx">
+                    </div>
+                </div>
+                
+                <div class="mb-8">
+                    <label class="block text-gray-700 font-bold mb-2">What's Your Business Type?</label>
+                    <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-purple-600">
+                        <option>Select your industry</option>
+                        <option>Plumbing</option>
+                        <option>Electrical</option>
+                        <option>Hospitality</option>
+                        <option>Salon / Spa</option>
+                        <option>Restaurant</option>
+                        <option>Retail</option>
+                        <option>Other Trade</option>
+                    </select>
+                </div>
+                
+                <div class="mb-8">
+                    <label class="block text-gray-700 font-bold mb-2">Message</label>
+                    <textarea class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-purple-600" rows="5" placeholder="Tell us about your business and what you're looking for..."></textarea>
+                </div>
+                
+                <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-lg font-bold text-lg hover:shadow-xl transition-shadow">
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h4 class="text-white font-bold mb-4">Services</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition">Digital Marketing</a></li>
+                        <li><a href="#" class="hover:text-white transition">Web Design</a></li>
+                        <li><a href="#" class="hover:text-white transition">Consulting</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li>hello@FrontDoor.uk</li>
+                        <li>+44(0)7530152028</li>
+                        <li>Merseyside, UK</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <p class="text-center text-sm">
+                    &copy; 2026 FrontDoor Solutions. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const contactForm = document.querySelector('form');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Create toast element
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = 'Thank you! We\'ll be in touch.';
+            document.body.appendChild(toast);
+            
+            // Remove toast after 3 seconds
+            setTimeout(() => {
+                toast.classList.add('hide');
+                setTimeout(() => {
+                    toast.remove();
+                    // Reset form
+                    contactForm.reset();
+                }, 500);
+            }, 3000);
+        });
+    </script></body>
+</html>
